@@ -25,7 +25,7 @@ SECRET_KEY = 'qm09_1=kda5$-)toha&wcl@+180_zmtaa)v!^q5cwp1&o9cl*&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cryptic-sierra-63059.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -132,6 +132,12 @@ LOGIN_REDIRECT_URL = '/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
